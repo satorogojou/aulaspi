@@ -49,7 +49,9 @@ public class Evento {
 	}
 	@Override
 	public String toString() {
-		return "Evento [nome=" + nome + ", local=" + local + ", data=" + data + ", horario=" + horario + "]";
+		return "Evento [id=" + id + ", nome=" + nome + ", local=" + local + ", data=" + data + ", horario=" + horario
+				+ "]";
 	}
+	
 	
 }

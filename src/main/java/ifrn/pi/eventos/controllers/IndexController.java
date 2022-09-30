@@ -10,6 +10,7 @@ public class IndexController {
 	public String index() {
 		System.out.println("Chamou o metódo index!");
 		return "home";
+		
 	}
 
 }
