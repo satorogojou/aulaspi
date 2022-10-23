@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ifrn.pi.eventos.models.Convidado;
 import ifrn.pi.eventos.models.Evento;
+import ifrn.pi.eventos.repositories.ConvidadoRepository;
 import ifrn.pi.eventos.repositories.EventoRepository;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,9 @@ public class EventosController {
 
 	@Autowired
 	private EventoRepository er;
+
+	@Autowired
+	private ConvidadoRepository cr;
 
 	@GetMapping("/forms")
 	public String forms() {
@@ -60,7 +65,29 @@ public class EventosController {
 		Evento evento = Opt.get();
 		md.addObject("evento", evento);
 
+		List<Convidado> convidados = cr.findByEvento(evento);
+		md.addObject("convidados", convidados);
+
 		return md;
+	}
+
+	@PostMapping("/{idEvento}")
+	public String salvarConvidado(@PathVariable Long idEvento, Convidado convidado) {
+
+		System.out.println("Id do Evento" + idEvento);
+		System.out.println(convidado);
+
+		Optional<Evento> opt = er.findById(idEvento);
+		if (opt.isEmpty()) {
+			return "redirect:/eventos";
+		}
+
+		Evento evento = opt.get();
+		convidado.setEvento(evento);
+
+		cr.save(convidado);
+
+		return "redirect:/eventos/{idEvento}";
 	}
 
 }
