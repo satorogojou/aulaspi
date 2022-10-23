@@ -6,6 +6,7 @@
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -36,6 +37,7 @@
 			<td th:text="${e.local}">ifrn campus lajes </td>
 			<td th:text="${e.data}">31/08/2022</td>
 			<td th:text="${e.horario}">17:17</td>
+			<td> <a th:href="@{/eventos/{id}/remover(id=${e.id})}"> <i class="material-icons">delete</i> </a></td>
 			</tr>
 			
 			</tbody>
