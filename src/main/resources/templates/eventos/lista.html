@@ -9,13 +9,13 @@
 </head>
 
 <body>
-	<div th:replaces="~ {menu ::menu}"></div>
+	<div th:replaces="~{menu :: menu}"></div>
 
 	<div class="container">
 
 		<h1>Lista de eventos</h1>
 
-		<table>
+		<table class="highligth">
 		<thead>
 		
 		<tr>
@@ -32,7 +32,7 @@
 			
 			<tr th:each="e : ${eventos}">
 			<td th:text="${e.id}">1</td>
-			<td><a th:href="@{/eventos/{id}(id=${e.id)}}"><span th:text="${e.nome}">Luiz Manoe></span></a></td>
+			<td><a th:href="@{/eventos/{id}(id=${e.id})}"><span th:text="${e.nome}">Luiz Manoel></span></a></td>
 			<td th:text="${e.local}">ifrn campus lajes </td>
 			<td th:text="${e.data}">31/08/2022</td>
 			<td th:text="${e.horario}">17:17</td>
